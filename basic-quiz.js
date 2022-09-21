@@ -61,20 +61,29 @@ const questions = [{
         (currentQuestion, questionNumber) => {
           const answers = [];
           for(letter in currentQuestion.answers){
+            let label = document.createElement("label")
+            label.innerText = `${letter} 
+              ${currentQuestion.answers[letter]}`
+            let input = document.createElement("input")
+            input.type = "radio",
+            input.setAttribute=`question${questionNumber},${letter}`
+            label.appendChild(input)
             answers.push(
-              `<label>
-                <input type="radio" name="question${questionNumber}" value="${letter}">
-                ${letter} :
-                ${currentQuestion.answers[letter]}
-              </label>`
-            );
+        
+              label.innerText = `${letter} 
+              ${currentQuestion.answers[letter]}`
+              
+          );
           }
+          let div1=document.createElement("div")
+          div1.innerText=`${currentQuestion.question}`;
+          let div2=document.createElement("div")
+          div2.innerText=`${answers.join('')}`
           output.push(
-            `<div class="question"> ${currentQuestion.question} </div>
-            <div class="answers"> ${answers.join('')} </div>`
+            `${currentQuestion.question}`,`${answers.join('')}`
           );
         }
       );
-      quizContainer.innerHTML = output.join('');
+      quizContainer.append(output.join(''));
     }
 createQuiz()
