@@ -1,23 +1,35 @@
 var allQuestions = [{
-  question: "Arvydo Sabonio marškinėlių numeris:",
-  choices: ["11", "32", "5", "2"],
+  question: "What's Batmans full name?",
+  choices: ["Bruce Wayne", "Bruce Lame", "Lil Wayne", "Dwayne Johnson"],
   correctAnswer: 0
 }, {
-  question: "Filmo Interstellar garso takelio kūrėjas:",
-  choices: ["Paris Hilton", "Smashmouth", "Linkin Park", "Hans Zimmer"],
+  question: "What's Batmans form of transport?",
+  choices: ["Bat-bicycle", "Bat-skates", "Bat-bus", "Bat-mobile"],
   correctAnswer: 3
 }, {
-  question: "Žymiausias 21 amžiaus astrofizikas",
-  choices: ["Neil deGrasse Tyson", "Stephen Hawking", "Mike Brown", "Paul F. Goldsmith"],
+  question: "What's Batmans side kick name?",
+  choices: ["Steven", "Robin", "Mike", "Chad"],
   correctAnswer: 1
 }, {
-  question: "Kelintais metais buvo išleistas filmas Šrekas?",
-  choices: ["2001 m.", "1999m.", "2010m.","2003m."],
+  question: "Which one is an enemy of Batman?",
+  choices: ["Joker", "Donald Trump", "Count Dracula","Tinkerbell"],
   correctAnswer: 0
 },{
-  question: "Kiek planetų yra saulės sistemoje?",
-  choices: ["8", "9", "5","12"],
+  question: "Who played Batman in the DC universe movies? (Until the 2022 one...)",
+  choices: ["Ben Affleck", "Keanu Reeves", "Kanye West","Joaquin Pheonix"],
   correctAnswer: 0
+},{
+  question: "Who created the Batman character?",
+  choices: ["Tadas Vidmantas", "Peyton Manning", "Bob Kane","Bob Dyllan"],
+  correctAnswer: 2
+},{
+  question: "What is the Bat-ape name?",
+  choices: ["Mojo-jojo", "Mogo", "Monkey","King-kong"],
+  correctAnswer: 1
+},{
+  question: "Who killed Batmans parents?",
+  choices: ["Joe Rogan", "Michael Mayers", "Soulja Boy","Joe Chill"],
+  correctAnswer: 3
 }];
 
 function Quiz(options) {
@@ -52,20 +64,22 @@ function Quiz(options) {
         var choice_text = document.createElement('label');
         choice_text.setAttribute('for', check.name);
         choice_text.textContent = q[i].choices[j];
-
         choice.appendChild(check);
         choice.appendChild(choice_text);
         list.appendChild(choice);
       }
       var prev_button = document.createElement('button');
-      prev_button.textContent = 'Atgal';
+      prev_button.textContent = 'Previous question';
+      prev_button.id= 'prev_button';
       prev_button.addEventListener('click', prevQuestion);
       var next_button = document.createElement('button');
+    
       if (i === q_number - 1) {
-        next_button.textContent = 'Rezultatai';
+        next_button.textContent = 'Results';
         next_button.addEventListener('click', finishQuiz);
       } else {
-        next_button.textContent = 'Sekantis klausimas';
+        next_button.textContent = 'Next question';
+        next_button.id='next_button';
         next_button.addEventListener('click', nextQuestion);
       }
       question.appendChild(list);
@@ -126,11 +140,13 @@ function Quiz(options) {
       elem.removeChild(questions[current_number]);
       var result = document.createElement('p');
       if (correct_answers === 0) {
-        result.textContent = "Deja neatsakėte nei vieno klausimo teisingai";
-      } else {
-        result.textContent = "Jūsų teisingų atsakymų skaičius: " + correct_answers + "iš" + questions.length;
+        result.textContent = "0 out of 10....What a shame";
+      } else if (correct_answers <5){
+        result.textContent = "You have answered " + correct_answers + "out of" + questions.length + "questions. You should study more.";
+      } else{
+        result.textContent = "Look at you go! You got" + correct_answers + "out of" + questions.length +"correct! That's way better than I imagined";
       }
-      elem.appendChild(result);
+    elem.appendChild(result);
     }
   }
 }

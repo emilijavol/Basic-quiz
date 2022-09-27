@@ -1,3 +1,77 @@
 .question ul {
     list-style: none;
   }
+  body {
+    background: #333;
+  }
+  h1 {font-size: 50px;
+    font-family: fantasy;
+    color: black;
+    font-weight: 300;
+    background-color: #333;
+    text-align: center;
+    font-weight: 600;
+  }
+  #question, p {font-size: 20px;
+    font-family: fantasy;
+    color: black;
+    font-weight: 500;
+    background-color: #333;
+    text-align: center;
+    } 
+  #prev_button, #next_button{
+    font-family: fantasy;
+    font-size: 15px;
+    font-weight: 300;
+    background-color:yellow;
+    color: black;
+    border-radius: 50px;
+    padding: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+   }
+  .batman:after {
+    animation: pulse-animation 1s infinite;
+  }
+  .batman {
+    width: 100px;
+    height: 45px;
+    left: 100px;
+    top: 100px;
+    position: absolute;
+  }
+  .batman:before,
+  .batman:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: black;
+    box-shadow: 0 0 0 50px;
+    clip-path: polygon(
+      -50px -20px,
+      10% -12px,
+      20% 0,
+      calc(50% - 15px) 0,
+      calc(50% - 10px) -20px,
+      calc(50% - 8px) -15px,
+      calc(50% + 8px) -15px,
+      calc(50% + 10px) -20px,
+      calc(50% + 15px) 0,
+      80% 0,
+      90% -12px,
+      calc(100% + 50px) -20px,
+      100% 80%,
+      calc(100% + 10px) calc(100% + 10px),
+      60% 100%,
+      50% calc(100% + 15px),
+      40% 100%,
+      -10px calc(100% + 10px),
+      0 80%
+    );
+  }
+  @keyframes pulse-animation {
+    to {
+      transform: perspective(300px) translateZ(100px);
+      opacity: 0;
+    }
+  }
